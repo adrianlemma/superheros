@@ -1,4 +1,5 @@
 com\challenge\w2m\superheros\exception\ApiException.class
+com\challenge\w2m\superheros\config\SwaggerConfig.class
 com\challenge\w2m\superheros\entity\Superhero.class
 com\challenge\w2m\superheros\repository\SuperheroRepository.class
 com\challenge\w2m\superheros\service\SuperheroService.class
