@@ -1,6 +1,13 @@
-package com.challemnge.w2m.superheros.service.impl;
+package com.challenge.w2m.superheros.service.impl;
 
-import java.util.Arrays;
+import com.challenge.w2m.superheros.entity.Superhero;
+import com.challenge.w2m.superheros.exception.ApiException;
+import com.challenge.w2m.superheros.repository.SuperheroRepository;
+import java.util.List;
+import java.util.Optional;
+
+import com.challenge.w2m.superheros.constants.Constants;
+import com.challenge.w2m.superheros.mocks.Mocks;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -9,8 +16,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static com.challemnge.w2m.superheros.constants.Constants.*;
-import static com.challemnge.w2m.superheros.mocks.Mocks.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
@@ -34,20 +39,20 @@ public class SuperheroServiceImplTest {
         @Test
         @DisplayName("test when superhero is saved successfully")
         void testWhenSuperheroIsSavedSuccessfully() {
-            superheroRepositorySaveMock(superheroRepository, mockSuperhero());
-            Superhero result = superheroService.save(mockSuperhero());
+            Mocks.superheroRepositorySaveMock(superheroRepository, Mocks.mockSuperhero());
+            Superhero result = superheroService.save(Mocks.mockSuperhero());
             assertNotNull(result);
-            assertEquals(SUPERHERO_ID, result.getId());
-            assertEquals(SUPERHERO_NAME, result.getName());
-            assertEquals(SUPERHERO_SECRET_IDENTITY, result.getSecretIdentity());
-            assertEquals(SUPERHERO_SUPER_POWER, result.getSuperPower().get(0));
+            assertEquals(Constants.SUPERHERO_ID, result.getSuperheroId());
+            assertEquals(Constants.SUPERHERO_NAME, result.getName());
+            assertEquals(Constants.SUPERHERO_SECRET_IDENTITY, result.getSecretIdentity());
+            assertEquals(Constants.SUPERHERO_SUPER_POWER, result.getSuperPowers().get(0));
         }
 
         @Test
         @DisplayName("test when fails saving superhero")
         void testWhenFailsSavingSuperhero() {
-            superheroRepositorySaveThrowsExceptionMock(superheroRepository, ApiException("Error saving"));
-            assertThrows(ApiException.class, () -> superheroService.save(mockSuperhero()));
+            Mocks.superheroRepositorySaveThrowsExceptionMock(superheroRepository, new ApiException("Error saving"));
+            assertThrows(ApiException.class, () -> superheroService.save(Mocks.mockSuperhero()));
         }
     }
 
@@ -57,16 +62,16 @@ public class SuperheroServiceImplTest {
         @Test
         @DisplayName("test when superhero is deleted successfully")
         void testWhenSuperheroIsDeletedSuccessfully() {
-            superheroRepositoryDeleteMock(superheroRepository);
-            superheroService.deleteById(SUPERHERO_ID);
-            verify(superheroRepository).delete(anyInt());
+            Mocks.superheroRepositoryDeleteMock(superheroRepository);
+            superheroService.deleteById(Constants.SUPERHERO_ID);
+            verify(superheroRepository).deleteById(anyInt());
         }
 
         @Test
         @DisplayName("test when fails deleting superhero")
         void testWhenFailsSavingSuperhero() {
-            superheroRepositoryDeleteThrowsExceptionMock(superheroRepository, ApiException("Error deleting"));
-            assertThrows(ApiException.class, () -> superheroService.deleteById(SUPERHERO_ID));
+            Mocks.superheroRepositoryDeleteThrowsExceptionMock(superheroRepository, new ApiException("Error deleting"));
+            assertThrows(ApiException.class, () -> superheroService.deleteById(Constants.SUPERHERO_ID));
         }
     }
 
@@ -76,22 +81,22 @@ public class SuperheroServiceImplTest {
         @Test
         @DisplayName("test when superhero is found by id successfully")
         void testWhenSuperheroIsFoundByIdSuccessfully() {
-            superheroRepositoryFindByIdMock(superheroRepository, mockSuperhero());
-            Optional<Superhero> result = superheroService.findById(SUPERHERO_ID);
+            Mocks.superheroRepositoryFindByIdMock(superheroRepository, Mocks.mockSuperhero());
+            Optional<Superhero> result = superheroService.findById(Constants.SUPERHERO_ID);
             assertFalse(result.isEmpty());
         }
 
         @Test
         @DisplayName("test when fails getting superhero by id")
         void testWhenFailsGettingSuperheroById() {
-            superheroRepositoryFindByIdThrowsExceptionMock(superheroRepository, ApiException("Error deleting"));
-            assertThrows(ApiException.class, () -> superheroService.findById(SUPERHERO_ID));
+            Mocks.superheroRepositoryFindByIdThrowsExceptionMock(superheroRepository, new ApiException("Error deleting"));
+            assertThrows(ApiException.class, () -> superheroService.findById(Constants.SUPERHERO_ID));
         }
 
         @Test
         @DisplayName("test when superheros are listed successfully")
         void testWhenSuperherosAreListedSuccessfully() {
-            superheroRepositoryFindAllMock(superheroRepository, Arrays.asList(mockSuperhero()));
+            Mocks.superheroRepositoryFindAllMock(superheroRepository, List.of(Mocks.mockSuperhero()));
             List<Superhero> result = superheroService.findAll();
             assertEquals(1, result.size());
         }
@@ -99,23 +104,23 @@ public class SuperheroServiceImplTest {
         @Test
         @DisplayName("test when fails listing all superheros")
         void testWhenFailsListingAllSuperheros() {
-            superheroRepositoryFindAllThrowsExceptionMock(superheroRepository, ApiException("Error deleting"));
+            Mocks.superheroRepositoryFindAllThrowsExceptionMock(superheroRepository, new ApiException("Error deleting"));
             assertThrows(ApiException.class, () -> superheroService.findAll());
         }
 
         @Test
         @DisplayName("test when superheros are listed by name part successfully")
         void testWhenSuperherosAreListedByNamePartSuccessfully() {
-            superheroRepositoryFindByNamePartMock(superheroRepository, Arrays.asList(mockSuperhero()));
-            List<Superhero> result = superheroService.findByNamePart(SUPERHERO_NAME_PART);
+            Mocks.superheroRepositoryfindByNameContainingIgnoreCaseMock(superheroRepository, List.of(Mocks.mockSuperhero()));
+            List<Superhero> result = superheroService.findByNamePart(Constants.SUPERHERO_NAME_PART);
             assertEquals(1, result.size());
         }
 
         @Test
         @DisplayName("test when fails listing superheros by name part")
         void testWhenFailsListingSuperherosByNamePart() {
-            superheroRepositoryFindByNamePartThrowsExceptionMock(superheroRepository, ApiException("Error deleting"));
-            assertThrows(ApiException.class, () -> superheroService.findByNamePart(SUPERHERO_NAME_PART));
+            Mocks.superheroRepositoryfindByNameContainingIgnoreCaseThrowsExceptionMock(superheroRepository, new ApiException("Error deleting"));
+            assertThrows(ApiException.class, () -> superheroService.findByNamePart(Constants.SUPERHERO_NAME_PART));
         }
     }
 
@@ -125,15 +130,15 @@ public class SuperheroServiceImplTest {
         @Test
         @DisplayName("test exists by id method")
         void testExistsByIdMethod() {
-            superheroRepositoryExistsByIdMock(superheroRepository, true);
-            assertTrue(superheroService.existsById(SUPERHERO_ID));
+            Mocks.superheroRepositoryExistsByIdMock(superheroRepository, true);
+            assertTrue(superheroService.existsById(Constants.SUPERHERO_ID));
         }
 
         @Test
         @DisplayName("test exists by name method")
         void testExistsByNameMethod() {
-            superheroRepositoryExistsByNameMock(superheroRepository, true);
-            assertTrue(superheroService.existsByName(SUPERHERO_NAME));
+            Mocks.superheroRepositoryExistsByNameMock(superheroRepository, true);
+            assertTrue(superheroService.existsByName(Constants.SUPERHERO_NAME));
         }
     }
 }

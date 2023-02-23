@@ -1,4 +1,4 @@
-package com.challemnge.w2m.superheros;
+package com.challenge.w2m.superheros;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

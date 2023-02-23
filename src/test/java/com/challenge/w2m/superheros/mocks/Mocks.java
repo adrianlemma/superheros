@@ -1,18 +1,22 @@
-package com.challemnge.w2m.superheros.mocks;
+package com.challenge.w2m.superheros.mocks;
 
-import java.util.Arrays;
+import com.challenge.w2m.superheros.entity.Superhero;
+import com.challenge.w2m.superheros.exception.ApiException;
+import com.challenge.w2m.superheros.repository.SuperheroRepository;
+import com.challenge.w2m.superheros.service.SuperheroService;
+import com.challenge.w2m.superheros.constants.Constants;
+
+import java.util.List;
 import java.util.Optional;
 
-import static com.challemnge.w2m.superheros.constants.Constants.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class Mocks {
 
     // Mock DTOs
     public static Superhero mockSuperhero() {
-        return new Superhero(SUPERHERO_ID, SUPERHERO_NAME, SUPERHERO_SECRET_IDENTITY, Arrays.asList(SUPERHERO_SUPER_POWER));
+        return new Superhero(Constants.SUPERHERO_ID, Constants.SUPERHERO_NAME, Constants.SUPERHERO_SECRET_IDENTITY, List.of(Constants.SUPERHERO_SUPER_POWER));
     }
 
     // Mock Services
@@ -29,27 +33,19 @@ public class Mocks {
     }
 
     public static void superheroServiceExistsByNameMock(SuperheroService service, Boolean result) {
-        when(service.existsById(anyString())).thenReturn(result);
-    }
-
-    public static void superheroServiceUpdateMock(SuperheroService service, Superhero superhero) {
-        when(service.update(any())).thenReturn(superhero);
-    }
-
-    public static void superheroServiceUpdateThrowsExceptionMock(SuperheroService service, ApiException ex) {
-        when(service.update(any())).thenThrow(ex);
+        when(service.existsByName(anyString())).thenReturn(result);
     }
 
     public static void superheroServiceDeleteMock(SuperheroService service) {
-        doNothing().when(service.deleteById(anyInt()));
+        doNothing().when(service).deleteById(anyInt());
     }
 
     public static void superheroServiceDeleteThrowsExceptionMock(SuperheroService service, ApiException ex) {
-        when(service.deleteById(anyInt())).thenThrow(ex);
+        doThrow(ex).when(service).deleteById(anyInt());
     }
 
     public static void superheroServiceFindByIdMock(SuperheroService service, Superhero superhero) {
-        when(service.findById(anyInt())).thenReturn(superhero);
+        when(service.findById(anyInt())).thenReturn(superhero == null ? Optional.empty() : Optional.of(superhero));
     }
 
     public static void superheroServiceFindByIdThrowsExceptionMock(SuperheroService service, ApiException ex) {
@@ -65,11 +61,11 @@ public class Mocks {
     }
 
     public static void superheroServiceFindByNamePartMock(SuperheroService service, List<Superhero> superheros) {
-        when(service.findByNamePart()).thenReturn(superheros);
+        when(service.findByNamePart(anyString())).thenReturn(superheros);
     }
 
     public static void superheroServiceFindByNamePartThrowsExceptionMock(SuperheroService service, ApiException ex) {
-        when(service.findByNamePart()).thenThrow(ex);
+        when(service.findByNamePart(anyString())).thenThrow(ex);
     }
 
     // Mock Repository
@@ -90,27 +86,27 @@ public class Mocks {
     }
 
     public static void superheroRepositoryFindAllMock(SuperheroRepository superheroRepository, List<Superhero> superheros) {
-        when(superheroRepository.findAll(any())).thenReturn(superheros);
+        when(superheroRepository.findAll()).thenReturn(superheros);
     }
 
     public static void superheroRepositoryFindAllThrowsExceptionMock(SuperheroRepository superheroRepository, ApiException ex) {
-        when(superheroRepository.findAll(any())).thenThrow(ex);
+        when(superheroRepository.findAll()).thenThrow(ex);
     }
 
-    public static void superheroRepositoryFindByNamePartMock(SuperheroRepository superheroRepository, List<Superhero> superheros) {
-        when(superheroRepository.findByNamePart(any())).thenReturn(superheros);
+    public static void superheroRepositoryfindByNameContainingIgnoreCaseMock(SuperheroRepository superheroRepository, List<Superhero> superheros) {
+        when(superheroRepository.findByNameContainingIgnoreCase(any())).thenReturn(superheros);
     }
 
-    public static void superheroRepositoryFindByNamePartThrowsExceptionMock(SuperheroRepository superheroRepository, ApiException ex) {
-        when(superheroRepository.findByNamePart(any())).thenThrow(ex);
+    public static void superheroRepositoryfindByNameContainingIgnoreCaseThrowsExceptionMock(SuperheroRepository superheroRepository, ApiException ex) {
+        when(superheroRepository.findByNameContainingIgnoreCase(any())).thenThrow(ex);
     }
 
     public static void superheroRepositoryDeleteMock(SuperheroRepository superheroRepository) {
-        doNothing().when(superheroRepository.deleteById(any()));
+        doNothing().when(superheroRepository).deleteById(any());
     }
 
     public static void superheroRepositoryDeleteThrowsExceptionMock(SuperheroRepository superheroRepository, ApiException ex) {
-        when(superheroRepository.deleteById(any())).thenThrow(ex);
+        doThrow(ex).when(superheroRepository).deleteById(any());
     }
 
     public static void superheroRepositoryExistsByIdMock(SuperheroRepository superheroRepository, Boolean result) {
@@ -118,6 +114,6 @@ public class Mocks {
     }
 
     public static void superheroRepositoryExistsByNameMock(SuperheroRepository superheroRepository, Boolean result) {
-        when(superheroRepository.existsByName(anyString())).thenReturn(result);
+        when(superheroRepository.existsByNameIgnoreCase(anyString())).thenReturn(result);
     }
 }

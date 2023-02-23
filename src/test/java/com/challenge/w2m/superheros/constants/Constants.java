@@ -1,4 +1,4 @@
-package com.challemnge.w2m.superheros.constants;
+package com.challenge.w2m.superheros.constants;
 
 public class Constants {
     public static final Integer SUPERHERO_ID = 1;
