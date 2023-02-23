@@ -12,3 +12,4 @@ com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest$TestDeleteMet
 com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest.class
 com\challenge\w2m\superheros\mocks\Mocks.class
 com\challenge\w2m\superheros\entity\SuperheroTest.class
+com\challenge\w2m\superheros\util\FileUtilsTest.class

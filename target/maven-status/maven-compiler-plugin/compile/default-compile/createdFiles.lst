@@ -2,9 +2,12 @@ com\challenge\w2m\superheros\exception\ApiException.class
 com\challenge\w2m\superheros\entity\Superhero.class
 com\challenge\w2m\superheros\repository\SuperheroRepository.class
 com\challenge\w2m\superheros\service\SuperheroService.class
+com\challenge\w2m\superheros\aop\TimeTrackerAspect.class
 com\challenge\w2m\superheros\controller\ExceptionController.class
 com\challenge\w2m\superheros\exception\SuperheroException.class
 com\challenge\w2m\superheros\controller\SuperheroController.class
 com\challenge\w2m\superheros\SuperherosApplication.class
+com\challenge\w2m\superheros\aop\TimeTracker.class
 com\challenge\w2m\superheros\service\impl\SuperheroServiceImpl.class
 com\challenge\w2m\superheros\util\FileUtils.class
+com\challenge\w2m\superheros\config\CacheConfig.class
