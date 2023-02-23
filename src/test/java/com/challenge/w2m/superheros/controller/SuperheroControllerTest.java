@@ -231,6 +231,16 @@ public class SuperheroControllerTest {
         }
 
         @Test
+        @DisplayName("Test when superhero is not found by id")
+        void testWhenSuperheroIsNotFoundById() throws Exception {
+            Mocks.superheroServiceFindByIdMock(superheroService, null);
+
+            mvc.perform(MockMvcRequestBuilders.get("/w2m/superhero/" + Constants.SUPERHERO_ID)
+                            .accept(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isNotFound());
+        }
+
+        @Test
         @DisplayName("Test when all superheros are listed successfully")
         void testWhenAllSuperherosAreListedSuccessfully() throws Exception {
             Mocks.superheroServiceFindAllMock(superheroService, List.of(Mocks.mockSuperhero()));

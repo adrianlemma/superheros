@@ -31,7 +31,10 @@ class SuperheroTest {
                                                 List.of(SUPERHERO_SUPER_POWER)))),
                         dynamicTest("SuperPowers " + input,
                                 () -> assertThrows(SuperheroException.class,
-                                        () -> new Superhero(SUPERHERO_ID, SUPERHERO_NAME, SUPERHERO_SECRET_IDENTITY, null)))
+                                        () -> new Superhero(SUPERHERO_ID, SUPERHERO_NAME, SUPERHERO_SECRET_IDENTITY, null))),
+                        dynamicTest("SuperPower empty",
+                                () -> assertThrows(SuperheroException.class,
+                                        () -> new Superhero(SUPERHERO_ID, SUPERHERO_NAME, SUPERHERO_SECRET_IDENTITY, List.of(" "))))
                 )));
     }
 
