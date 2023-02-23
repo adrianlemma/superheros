@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.challenge.w2m.superheros.service.impl.SuperheroServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.185 s - in com.challenge.w2m.superheros.service.impl.SuperheroServiceImplTest

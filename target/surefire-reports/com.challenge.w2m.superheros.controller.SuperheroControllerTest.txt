@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.challenge.w2m.superheros.controller.SuperheroControllerTest
+-------------------------------------------------------------------------------
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.929 s - in com.challenge.w2m.superheros.controller.SuperheroControllerTest

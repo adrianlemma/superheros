@@ -1,0 +1,14 @@
+com\challenge\w2m\superheros\controller\SuperheroControllerTest$testGetMethod.class
+com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest$TestAllSindMethods.class
+com\challenge\w2m\superheros\constants\Constants.class
+com\challenge\w2m\superheros\controller\SuperheroControllerTest$TestDeleteMethod.class
+com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest$TestAllExistsMethods.class
+com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest$TestSaveMethod.class
+com\challenge\w2m\superheros\controller\SuperheroControllerTest$TestPostMethod.class
+com\challenge\w2m\superheros\controller\SuperheroControllerTest.class
+com\challenge\w2m\superheros\controller\SuperheroControllerTest$TestPutMethod.class
+com\challenge\w2m\superheros\SuperherosApplicationTests.class
+com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest$TestDeleteMethod.class
+com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest.class
+com\challenge\w2m\superheros\mocks\Mocks.class
+com\challenge\w2m\superheros\entity\SuperheroTest.class
