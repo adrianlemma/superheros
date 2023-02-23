@@ -103,7 +103,7 @@ public class SuperheroControllerTest {
             Mocks.superheroServiceFindByIdMock(superheroService, Mocks.mockSuperhero());
             Mocks.superheroServiceSaveMock(superheroService, request);
 
-            mvc.perform(MockMvcRequestBuilders.put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
+            mvc.perform(put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
                             .content(mapper.writeValueAsString(request))
                             .contentType(MediaType.APPLICATION_JSON)
                             .accept(MediaType.APPLICATION_JSON))
@@ -118,7 +118,7 @@ public class SuperheroControllerTest {
             Mocks.superheroServiceFindByIdMock(superheroService, Mocks.mockSuperhero());
             Mocks.superheroServiceSaveThrowsExceptionMock(superheroService, new ApiException("Error updating data"));
 
-            mvc.perform(MockMvcRequestBuilders.put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
+            mvc.perform(put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
                             .content(mapper.writeValueAsString(Mocks.mockSuperhero()))
                             .contentType(MediaType.APPLICATION_JSON)
                             .accept(MediaType.APPLICATION_JSON))
@@ -130,7 +130,7 @@ public class SuperheroControllerTest {
         void testWhenFailsUpdatingSuperheroByBadRequest() throws Exception {
             Mocks.superheroServiceSaveMock(superheroService, null);
 
-            mvc.perform(MockMvcRequestBuilders.put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
+            mvc.perform(put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
                             .content("{}")
                             .contentType(MediaType.APPLICATION_JSON)
                             .accept(MediaType.APPLICATION_JSON))
@@ -142,7 +142,7 @@ public class SuperheroControllerTest {
         void testWhenFailsUpdatingSuperheroByIdNotFound() throws Exception {
             Mocks.superheroServiceExistsByIdMock(superheroService, false);
 
-            mvc.perform(MockMvcRequestBuilders.put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
+            mvc.perform(put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
                             .content(mapper.writeValueAsString(Mocks.mockSuperhero()))
                             .contentType(MediaType.APPLICATION_JSON)
                             .accept(MediaType.APPLICATION_JSON))
@@ -158,7 +158,7 @@ public class SuperheroControllerTest {
             Mocks.superheroServiceExistsByNameMock(superheroService, true);
             Mocks.superheroServiceFindByIdMock(superheroService, Mocks.mockSuperhero());
 
-            mvc.perform(MockMvcRequestBuilders.put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
+            mvc.perform(put("/w2m/superhero/update/" + Constants.SUPERHERO_ID)
                             .content(mapper.writeValueAsString(request))
                             .contentType(MediaType.APPLICATION_JSON)
                             .accept(MediaType.APPLICATION_JSON))
@@ -175,7 +175,7 @@ public class SuperheroControllerTest {
             Mocks.superheroServiceExistsByIdMock(superheroService, true);
             Mocks.superheroServiceDeleteMock(superheroService);
 
-            mvc.perform(MockMvcRequestBuilders.delete("/w2m/superhero/delete/" + Constants.SUPERHERO_ID)
+            mvc.perform(delete("/w2m/superhero/delete/" + Constants.SUPERHERO_ID)
                             .contentType(MediaType.APPLICATION_JSON)
                             .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk());
@@ -187,7 +187,7 @@ public class SuperheroControllerTest {
             Mocks.superheroServiceExistsByIdMock(superheroService, true);
             Mocks.superheroServiceDeleteThrowsExceptionMock(superheroService, new ApiException("Error trying to delete"));
 
-            mvc.perform(MockMvcRequestBuilders.delete("/w2m/superhero/delete/" + Constants.SUPERHERO_ID)
+            mvc.perform(delete("/w2m/superhero/delete/" + Constants.SUPERHERO_ID)
                             .contentType(MediaType.APPLICATION_JSON)
                             .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isInternalServerError());
@@ -198,7 +198,7 @@ public class SuperheroControllerTest {
         void testWhenFailsDeletingSuperheroByIdNotFound() throws Exception {
             Mocks.superheroServiceExistsByIdMock(superheroService, false);
 
-            mvc.perform(MockMvcRequestBuilders.delete("/w2m/superhero/delete/" + Constants.SUPERHERO_ID)
+            mvc.perform(delete("/w2m/superhero/delete/" + Constants.SUPERHERO_ID)
                             .contentType(MediaType.APPLICATION_JSON)
                             .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isNotFound());

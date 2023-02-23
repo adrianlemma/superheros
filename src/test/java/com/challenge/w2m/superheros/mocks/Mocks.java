@@ -5,7 +5,6 @@ import com.challenge.w2m.superheros.exception.ApiException;
 import com.challenge.w2m.superheros.repository.SuperheroRepository;
 import com.challenge.w2m.superheros.service.SuperheroService;
 import com.challenge.w2m.superheros.constants.Constants;
-
 import java.util.List;
 import java.util.Optional;
 

@@ -1,17 +1,17 @@
 package com.challenge.w2m.superheros.controller;
 
+import com.challenge.w2m.superheros.aop.TimeTracker;
 import com.challenge.w2m.superheros.entity.Superhero;
 import com.challenge.w2m.superheros.exception.SuperheroException;
 import com.challenge.w2m.superheros.service.SuperheroService;
+import javax.validation.Valid;
+import java.util.Objects;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.Objects;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/w2m/superhero")
@@ -21,6 +21,7 @@ public class SuperheroController {
     @Autowired
     SuperheroService superheroService;
 
+    @TimeTracker("logs/superhero-controller-time.txt")
     @PostMapping("/save")
     public ResponseEntity<Object> saveSuperhero(@Valid @RequestBody Superhero request, BindingResult bindingResult) {
         if (bindingResult.hasErrors() || request == null) {
@@ -34,6 +35,7 @@ public class SuperheroController {
         return ResponseEntity.ok(superheroService.save(request));
     }
 
+    @TimeTracker("logs/superhero-controller-time.txt")
     @PutMapping("/update/{superhero-id}")
     public ResponseEntity<Object> updateSuperhero(@PathVariable("superhero-id") Integer superheroId,
                                                   @Valid @RequestBody Superhero request, BindingResult bindingResult) {
@@ -57,6 +59,7 @@ public class SuperheroController {
         return ResponseEntity.ok(superheroService.save(oldRecord.get()));
     }
 
+    @TimeTracker("logs/superhero-controller-time.txt")
     @DeleteMapping("/delete/{superhero-id}")
     public ResponseEntity<Object> deleteSuperhero(@PathVariable("superhero-id") Integer superheroId) {
         if (!superheroService.existsById(superheroId)) {
@@ -67,6 +70,7 @@ public class SuperheroController {
         return ResponseEntity.ok().build();
     }
 
+    @TimeTracker("logs/superhero-controller-time.txt")
     @GetMapping("/{superhero-id}")
     public ResponseEntity<Object> findSuperheroById(@PathVariable("superhero-id") Integer superheroId) {
         Optional<Superhero> result = superheroService.findById(superheroId);
@@ -76,11 +80,13 @@ public class SuperheroController {
         return ResponseEntity.ok(result.get());
     }
 
+    @TimeTracker("logs/superhero-controller-time.txt")
     @GetMapping("/list")
     public ResponseEntity<Object> findAllSuperheros() {
         return ResponseEntity.ok(superheroService.findAll());
     }
 
+    @TimeTracker("logs/superhero-controller-time.txt")
     @GetMapping("/name-part/{name-part}")
     public ResponseEntity<Object> findSuperherosByNamePart(@PathVariable("name-part") String namePart) {
         return ResponseEntity.ok(superheroService.findByNamePart(namePart));

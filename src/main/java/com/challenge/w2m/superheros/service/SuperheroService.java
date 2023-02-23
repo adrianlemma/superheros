@@ -1,7 +1,6 @@
 package com.challenge.w2m.superheros.service;
 
 import com.challenge.w2m.superheros.entity.Superhero;
-
 import java.util.List;
 import java.util.Optional;
 

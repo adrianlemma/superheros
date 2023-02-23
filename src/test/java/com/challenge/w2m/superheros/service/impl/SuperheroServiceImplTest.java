@@ -3,11 +3,10 @@ package com.challenge.w2m.superheros.service.impl;
 import com.challenge.w2m.superheros.entity.Superhero;
 import com.challenge.w2m.superheros.exception.ApiException;
 import com.challenge.w2m.superheros.repository.SuperheroRepository;
-import java.util.List;
-import java.util.Optional;
-
 import com.challenge.w2m.superheros.constants.Constants;
 import com.challenge.w2m.superheros.mocks.Mocks;
+import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

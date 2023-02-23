@@ -4,11 +4,10 @@ import com.challenge.w2m.superheros.entity.Superhero;
 import com.challenge.w2m.superheros.exception.ApiException;
 import com.challenge.w2m.superheros.repository.SuperheroRepository;
 import com.challenge.w2m.superheros.service.SuperheroService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class SuperheroServiceImpl implements SuperheroService {
