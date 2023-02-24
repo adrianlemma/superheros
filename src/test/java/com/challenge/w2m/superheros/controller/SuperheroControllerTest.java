@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -37,6 +38,7 @@ public class SuperheroControllerTest {
 
     @Nested
     @DisplayName("Test application POST method")
+    @WithMockUser(username = "TestUser", password = "TestUser", roles = "USER")
     class TestPostMethod {
         @Test
         @DisplayName("Test when superhero is saved successfully")
@@ -93,6 +95,7 @@ public class SuperheroControllerTest {
 
     @Nested
     @DisplayName("Test application PUT method")
+    @WithMockUser(username = "TestUser", password = "TestUser", roles = "USER")
     class TestPutMethod {
         @Test
         @DisplayName("Test when superhero is updated successfully")
@@ -168,6 +171,7 @@ public class SuperheroControllerTest {
 
     @Nested
     @DisplayName("Test application DELETE method")
+    @WithMockUser(username = "TestUser", password = "TestUser", roles = "ADMIN")
     class TestDeleteMethod {
         @Test
         @DisplayName("Test when superhero is deleted successfully")

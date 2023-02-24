@@ -10,19 +10,20 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/w2m/superhero")
-@CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE})
 public class SuperheroController {
 
     @Autowired
     SuperheroService superheroService;
 
-    @TimeTracker("logs/superhero-controller-time.txt")
     @PostMapping("/save")
+    @PreAuthorize("hasRole('USER')")
+    @TimeTracker("logs/superhero-controller-time.txt")
     public ResponseEntity<Object> saveSuperhero(@Valid @RequestBody Superhero request, BindingResult bindingResult) {
         if (bindingResult.hasErrors() || request == null) {
             throw new SuperheroException(Objects.requireNonNull(bindingResult.getFieldError()).getField(),
@@ -35,8 +36,9 @@ public class SuperheroController {
         return ResponseEntity.ok(superheroService.save(request));
     }
 
-    @TimeTracker("logs/superhero-controller-time.txt")
     @PutMapping("/update/{superhero-id}")
+    @PreAuthorize("hasRole('USER')")
+    @TimeTracker("logs/superhero-controller-time.txt")
     public ResponseEntity<Object> updateSuperhero(@PathVariable("superhero-id") Integer superheroId,
                                                   @Valid @RequestBody Superhero request, BindingResult bindingResult) {
 
@@ -59,8 +61,9 @@ public class SuperheroController {
         return ResponseEntity.ok(superheroService.save(oldRecord.get()));
     }
 
-    @TimeTracker("logs/superhero-controller-time.txt")
     @DeleteMapping("/delete/{superhero-id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @TimeTracker("logs/superhero-controller-time.txt")
     public ResponseEntity<Object> deleteSuperhero(@PathVariable("superhero-id") Integer superheroId) {
         if (!superheroService.existsById(superheroId)) {
             throw new SuperheroException("superhero-id", "Superhero with id [" + superheroId + "] does not exist",

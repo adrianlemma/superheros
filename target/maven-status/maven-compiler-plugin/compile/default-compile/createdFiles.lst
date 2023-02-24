@@ -7,6 +7,7 @@ com\challenge\w2m\superheros\aop\TimeTrackerAspect.class
 com\challenge\w2m\superheros\controller\ExceptionController.class
 com\challenge\w2m\superheros\exception\SuperheroException.class
 com\challenge\w2m\superheros\controller\SuperheroController.class
+com\challenge\w2m\superheros\config\SecurityConfig.class
 com\challenge\w2m\superheros\SuperherosApplication.class
 com\challenge\w2m\superheros\aop\TimeTracker.class
 com\challenge\w2m\superheros\service\impl\SuperheroServiceImpl.class
