@@ -27,12 +27,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests().antMatchers(HttpMethod.GET, "/w2m/**")
+                .authorizeRequests().antMatchers(HttpMethod.GET, "/w2m/**", "/h2-console/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
+                .httpBasic()
+                .and()
+                .headers()
+                .frameOptions()
+                .disable();;
     }
 
     @Bean

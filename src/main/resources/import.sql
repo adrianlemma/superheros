@@ -1,0 +1,26 @@
+INSERT INTO superhero (name, secret_identity) VALUES ('Superman', 'Clark Kent');
+INSERT INTO superhero (name, secret_identity) VALUES ('Hulk', 'Bruce Banner');
+INSERT INTO superhero (name, secret_identity) VALUES ('Batman', 'Bruce Wayne');
+INSERT INTO superhero (name, secret_identity) VALUES ('Spiderman', 'Peter Parker');
+INSERT INTO superhero (name, secret_identity) VALUES ('Ironman', 'Tony Stark');
+INSERT INTO superhero (name, secret_identity) VALUES ('Vision', 'Vision');
+INSERT INTO superhero (name, secret_identity) VALUES ('Wolverine', 'James Logan');
+
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (1, 'Volar');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (1, 'Vision lase');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (1, 'Super fuerza');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (1, 'Super resistencia');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (1, 'Soplido de hielo');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (2, 'Super fuerza');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (2, 'Super resistencia');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (2, 'Regeneracion instantanea');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (4, 'Super fuerza');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (4, 'Trepar muros');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (4, 'Sentido aracnido');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (4, 'Lanzar telaarañas');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (5, 'Inteligencia sobrehumana');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (6, 'Desmaterializacion');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (6, 'Rayos laser');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (6, 'Mente superdesarrollada');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (7, 'Regeneracion instantanea');
+INSERT INTO super_power (superhero_superhero_id, super_powers) VALUES (7, 'Garras en los nudillos');
