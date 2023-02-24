@@ -5,6 +5,7 @@ com\challenge\w2m\superheros\repository\SuperheroRepository.class
 com\challenge\w2m\superheros\service\SuperheroService.class
 com\challenge\w2m\superheros\aop\TimeTrackerAspect.class
 com\challenge\w2m\superheros\controller\ExceptionController.class
+com\challenge\w2m\superheros\aop\EmptyComponentForTesting.class
 com\challenge\w2m\superheros\exception\SuperheroException.class
 com\challenge\w2m\superheros\controller\SuperheroController.class
 com\challenge\w2m\superheros\config\SecurityConfig.class
