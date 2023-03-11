@@ -2,15 +2,16 @@ package com.challenge.w2m.superheros.service;
 
 import com.challenge.w2m.superheros.entity.Superhero;
 import java.util.List;
-import java.util.Optional;
 
 public interface SuperheroService {
 
     public Superhero save(Superhero superhero);
 
+    public Superhero update(Superhero superhero, Integer superheroId);
+
     public void deleteById(Integer superheroId);
 
-    public Optional<Superhero> findById(Integer superheroId);
+    public Superhero findById(Integer superheroId);
 
     public List<Superhero> findAll();
 

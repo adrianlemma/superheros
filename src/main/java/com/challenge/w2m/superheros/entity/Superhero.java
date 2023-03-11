@@ -34,11 +34,14 @@ public class Superhero {
     public Superhero() { }
 
     public Superhero(Integer superheroId, String name, String secretIdentity, List<String> superPowers) {
+        StringBuilder stringBuilder = new StringBuilder("");
         if (!validName(name)) {
-            throw new SuperheroException("name", "invalid value [" + name + "]", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new SuperheroException("name", stringBuilder.append("invalid value [")
+                    .append(name).append("]").toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         if (!validSecretIdentity(secretIdentity)) {
-            throw new SuperheroException("secretIdentity", "invalid value [" + secretIdentity + "]", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new SuperheroException("secretIdentity", stringBuilder.append("invalid value [")
+                    .append(secretIdentity).append("]").toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         if (!validSuperPowers(superPowers)) {
             throw new SuperheroException("name", "invalid value", HttpStatus.INTERNAL_SERVER_ERROR);

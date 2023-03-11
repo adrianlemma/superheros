@@ -207,8 +207,9 @@ Los datos utilizados para el request al registrar nuevas busquedas, deben cumpli
 Se implementa una Annotation **@TimeTracker** que se utiliza en todos los métodos del Controller. 
 Esta Annotation medirá el tiempo de ejecución del método en milisegundos y lo almacenará en un archivo de log. 
 
-Por defecto el archivo se almacena en el archivo "logs/time_tracker.txt", pero puede asignarse un directorio y archivo diferente desde la Annotation, por ejemplo, **@TimeTracker("new-dir/new-file.txt")**
-(de no exixtir el directorio o el archivo, este se creará en el momento).
+Por defecto el archivo se almacena en el archivo "logs/time_tracker.log", además, cada archivo de log no podrá exceder los 10MB de tamaño.
+
+Estos parámetros son modificables desde el archivo de configuracion **/resources/log4j.properties**
 
 ## Caché
 
@@ -238,3 +239,4 @@ Esta aplicación cuenta con la documentación generada por **Swagger2**, desde l
 - Swagger
 - Caché
 - AOP (custom annotation)
+- Log4J

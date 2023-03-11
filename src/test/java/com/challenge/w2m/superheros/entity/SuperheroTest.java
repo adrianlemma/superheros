@@ -19,20 +19,20 @@ class SuperheroTest {
     @TestFactory
     @DisplayName("Test null validators for params")
     Stream<DynamicNode> testFactoryNullValues() {
-        return Stream.of("Null").map(input -> dynamicContainer("Params in " + input,
+        return Stream.of("").map(input -> dynamicContainer("Params in null",
                 Stream.of(
-                        dynamicTest("Name " + input,
+                        dynamicTest("Name Null",
                                 () -> assertThrows(SuperheroException.class,
                                         () -> new Superhero(SUPERHERO_ID, null, SUPERHERO_SECRET_IDENTITY,
                                                 List.of(SUPERHERO_SUPER_POWER)))),
-                        dynamicTest("SecretIdentity " + input,
+                        dynamicTest("SecretIdentity Null",
                                 () -> assertThrows(SuperheroException.class,
                                         () -> new Superhero(SUPERHERO_ID, SUPERHERO_NAME, null,
                                                 List.of(SUPERHERO_SUPER_POWER)))),
-                        dynamicTest("SuperPowers " + input,
+                        dynamicTest("SuperPowers Null",
                                 () -> assertThrows(SuperheroException.class,
                                         () -> new Superhero(SUPERHERO_ID, SUPERHERO_NAME, SUPERHERO_SECRET_IDENTITY, null))),
-                        dynamicTest("SuperPower empty",
+                        dynamicTest("SuperPower Empty",
                                 () -> assertThrows(SuperheroException.class,
                                         () -> new Superhero(SUPERHERO_ID, SUPERHERO_NAME, SUPERHERO_SECRET_IDENTITY, List.of(" "))))
                 )));

@@ -4,10 +4,10 @@ import com.challenge.w2m.superheros.entity.Superhero;
 import com.challenge.w2m.superheros.exception.ApiException;
 import com.challenge.w2m.superheros.repository.SuperheroRepository;
 import com.challenge.w2m.superheros.service.SuperheroService;
-import com.challenge.w2m.superheros.constants.Constants;
 import java.util.List;
 import java.util.Optional;
 
+import static com.challenge.w2m.superheros.constants.Constants.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
@@ -15,7 +15,7 @@ public class Mocks {
 
     // Mock DTOs
     public static Superhero mockSuperhero() {
-        return new Superhero(Constants.SUPERHERO_ID, Constants.SUPERHERO_NAME, Constants.SUPERHERO_SECRET_IDENTITY, List.of(Constants.SUPERHERO_SUPER_POWER));
+        return new Superhero(SUPERHERO_ID, SUPERHERO_NAME, SUPERHERO_SECRET_IDENTITY, List.of(SUPERHERO_SUPER_POWER));
     }
 
     // Mock Services
@@ -25,6 +25,14 @@ public class Mocks {
 
     public static void superheroServiceSaveThrowsExceptionMock(SuperheroService service, ApiException ex) {
         when(service.save(any())).thenThrow(ex);
+    }
+
+    public static void superheroServiceUpdateMock(SuperheroService service, Superhero superhero) {
+        when(service.update(any(), anyInt())).thenReturn(superhero);
+    }
+
+    public static void superheroServiceUpdateThrowsExceptionMock(SuperheroService service, ApiException ex) {
+        when(service.update(any(), anyInt())).thenThrow(ex);
     }
 
     public static void superheroServiceExistsByIdMock(SuperheroService service, Boolean result) {
@@ -44,7 +52,7 @@ public class Mocks {
     }
 
     public static void superheroServiceFindByIdMock(SuperheroService service, Superhero superhero) {
-        when(service.findById(anyInt())).thenReturn(superhero == null ? Optional.empty() : Optional.of(superhero));
+        when(service.findById(anyInt())).thenReturn(superhero);
     }
 
     public static void superheroServiceFindByIdThrowsExceptionMock(SuperheroService service, ApiException ex) {

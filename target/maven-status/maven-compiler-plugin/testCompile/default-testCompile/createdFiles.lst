@@ -8,8 +8,8 @@ com\challenge\w2m\superheros\controller\SuperheroControllerTest$TestPostMethod.c
 com\challenge\w2m\superheros\controller\SuperheroControllerTest.class
 com\challenge\w2m\superheros\controller\SuperheroControllerTest$TestPutMethod.class
 com\challenge\w2m\superheros\SuperherosApplicationTests.class
+com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest$TestUpdateMethod.class
 com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest$TestDeleteMethod.class
 com\challenge\w2m\superheros\service\impl\SuperheroServiceImplTest.class
 com\challenge\w2m\superheros\mocks\Mocks.class
 com\challenge\w2m\superheros\entity\SuperheroTest.class
-com\challenge\w2m\superheros\util\FileUtilsTest.class

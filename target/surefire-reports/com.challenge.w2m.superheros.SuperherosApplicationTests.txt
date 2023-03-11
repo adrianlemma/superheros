@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.challenge.w2m.superheros.SuperherosApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.171 s - in com.challenge.w2m.superheros.SuperherosApplicationTests
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.084 s - in com.challenge.w2m.superheros.SuperherosApplicationTests

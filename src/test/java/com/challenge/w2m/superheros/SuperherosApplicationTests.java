@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static com.challenge.w2m.superheros.constants.Constants.FILE_PATH;
+import static com.challenge.w2m.superheros.constants.Constants.LOG_FILE_PATH;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
@@ -20,7 +20,7 @@ class SuperherosApplicationTests {
 
 	@AfterEach
 	void removeTestData() {
-		File file = new File(FILE_PATH);
+		File file = new File(LOG_FILE_PATH);
 		File directory = new File(file.getParent());
 		if (file.exists()) {
 			file.delete();
@@ -34,7 +34,7 @@ class SuperherosApplicationTests {
 	@DisplayName("test for custom annotation")
 	void testForCustomAnnotation() {
 		emptyComponentForTesting.methodForTestingCustomAnnotation();
-		File result = new File(FILE_PATH);
+		File result = new File(LOG_FILE_PATH);
 		assertTrue(result.exists());
 		assertTrue(result.length() > 0);
 	}

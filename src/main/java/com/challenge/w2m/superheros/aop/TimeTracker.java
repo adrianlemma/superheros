@@ -7,8 +7,4 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface TimeTracker {
-
-    String value() default "logs/time_tracker.txt";
-
-}
+public @interface TimeTracker { }
